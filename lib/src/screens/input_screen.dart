@@ -5,6 +5,7 @@ import 'package:bmi_calculator/src/components/reusable_card.dart';
 import 'package:bmi_calculator/src/components/selection_card.dart';
 import 'package:bmi_calculator/src/components/slider_card.dart';
 import 'package:bmi_calculator/src/constants.dart';
+import 'package:bmi_calculator/src/screens/result_screen.dart';
 
 enum Gender {
   male,
@@ -23,12 +24,22 @@ class _InputScreenState extends State<InputScreen> {
   int _age = 25;
   int _weight = 60;
 
+  void _calculateBMI() {
+    Navigator.of(context).pushReplacement(MaterialPageRoute(
+      builder: (context) => const ResultScreen(
+        bmiResult: "22.1",
+        resultText: "NORMAL",
+        interpretation: "You have a normal body weight. Good Job!",
+      ),
+    ));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(title: const Center(child: Text("BMI CALCULATOR"))),
         bottomNavigationBar: BottomFixedButton(
-          onPressed: () {},
+          onPressed: _calculateBMI,
           child: const Text("CALCULATE YOUR BMI"),
         ),
         body: SingleChildScrollView(
