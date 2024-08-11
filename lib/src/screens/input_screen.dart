@@ -25,11 +25,10 @@ class _InputScreenState extends State<InputScreen> {
   int _weight = 60;
 
   void _calculateBMI() {
-    Navigator.of(context).pushReplacement(MaterialPageRoute(
-      builder: (context) => const ResultScreen(
-        bmiResult: "22.1",
-        resultText: "NORMAL",
-        interpretation: "You have a normal body weight. Good Job!",
+    Navigator.of(context).push(MaterialPageRoute(
+      builder: (context) => ResultScreen(
+        height: _height,
+        weight: _weight,
       ),
     ));
   }
@@ -37,7 +36,7 @@ class _InputScreenState extends State<InputScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: const Center(child: Text("BMI CALCULATOR"))),
+        appBar: AppBar(title: const Text("BMI CALCULATOR")),
         bottomNavigationBar: BottomFixedButton(
           onPressed: _calculateBMI,
           child: const Text("CALCULATE YOUR BMI"),

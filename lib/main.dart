@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:bmi_calculator/src/screens/input_screen.dart';
 
 void main() {
-  runApp(const BMICalculator());
+  runApp(const ProviderScope(child: BMICalculator()));
 }
 
 class BMICalculator extends StatelessWidget {
@@ -18,6 +19,7 @@ class BMICalculator extends StatelessWidget {
           surfaceTintColor: Colors.transparent,
           elevation: 5,
           shadowColor: Colors.black,
+          centerTitle: true,
         ),
         scaffoldBackgroundColor: const Color(0xFF0A0E21),
       ),
